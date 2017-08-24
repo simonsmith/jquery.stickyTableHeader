@@ -10,6 +10,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
+    "concurrently": "^3.5.0",
     "cross-env": "^5.0.5",
     "eslint": "^4.5.0",
     "eslint-config-airbnb-base": "^11.3.1",
@@ -32,6 +33,7 @@
     "lint": "eslint src test",
     "test": "jest && npm run lint",
     "publish": "npm run build",
-    "start": "http-server -p 3001 -c-1"
+    "server": "http-server -p 3001 -c-1",
+    "start": "concurrently \"npm run server\" \"npm run dev\""
   }
 }
