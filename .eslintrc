@@ -1,0 +1,26 @@
+{
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+    "vars-on-top": 0,
+    "comma-dangle": [2, "always-multiline"],
+    "padded-blocks": ["error", { "classes": "always" }],
+    "func-names": 0,
+    "max-len": 0,
+    "one-var": ["error", {"initialized": "never", "uninitialized": "always"}],
+    "one-var-declaration-per-line": 0,
+    "no-use-before-define": [2, "nofunc"],
+    "space-before-function-paren": 0,
+    "object-curly-spacing": ["error", "never"],
+    "default-case": 0,
+    "import/no-extraneous-dependencies": 0
+  }
+}

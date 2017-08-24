@@ -1,0 +1,37 @@
+{
+  "name": "jquery-sticky-table-header",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Simon Smith",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
+    "http-server": "^0.10.0",
+    "jest": "^20.0.4",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.5.5"
+  },
+  "peerDependencies": {
+    "jquery": "^1.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonsmith/jquery.stickyTableHeader/"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack --watch",
+    "lint": "eslint src test",
+    "test": "jest && npm run lint",
+    "publish": "npm run build",
+    "start": "http-server -p 3001 -c-1"
+  }
+}

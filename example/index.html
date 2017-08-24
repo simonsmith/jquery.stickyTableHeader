@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Example</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="example.css">
+  <script src="jquery-1.12.4.js"></script>
+  <script src="../build/jquery.stickyTableHeader.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1 style="text-align: center;">jQuery Sticky Table Header example</h1>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="2">Some data</th>
+            <th colspan="2">Some data</th>
+            <th colspan="2">Some data</th>
+          </tr>
+          <tr>
+            <th>Lorem</th>
+            <th>Ipsum</th>
+            <th>Lorem</th>
+            <th>Ipsum</th>
+            <th>Lorem</th>
+            <th>Ipsum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>First row</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="5">Some data</th>
+            <th colspan="1">Some data</th>
+          </tr>
+          <tr>
+            <th>Lorem</th>
+            <th>Ipsum</th>
+            <th>Lorem</th>
+            <th>Ipsum</th>
+            <th>Lorem</th>
+            <th>Ipsum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>First row</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="2">Some data</th>
+            <th colspan="2">Some data</th>
+            <th colspan="2">Some data</th>
+          </tr>
+          <tr>
+            <th>Lorem</th>
+            <th>Ipsum</th>
+            <th>Lorem</th>
+            <th>Ipsum</th>
+            <th>Lorem</th>
+            <th>Ipsum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>First row</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+          <tr>
+            <td>Vestibulum rhoncus</td>
+            <td>Aliquam sed</td>
+            <td>Donec lobortis pharetra</td>
+            <td>Proin pretium</td>
+            <td>Duis porttitor dui elit</td>
+            <td>Aliquam placerat ante</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    $('.table-container').stickyTableHeader();
+  </script>
+
+</body>
+</html>

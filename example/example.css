@@ -1,0 +1,43 @@
+.container {
+  margin: 0 auto;
+  width: 980px;
+}
+
+.table-container {
+  margin-bottom: 100px;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  padding-bottom: 1500px;
+}
+
+.StickyTableHeader {
+  background: #fff;
+}
+
+.StickyTableHeader.is-scrolling {
+  box-shadow: 0 3px 4px -2px #777;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-collapse: collapse;
+}
