@@ -31,7 +31,7 @@ class StickyTableHeader {
   }
 
   static logError(message) {
-    console.error(`StickyTableHeader:  + ${message}`); // eslint-disable-line no-console
+    console.error(`StickyTableHeader: ${message}`); // eslint-disable-line no-console
   }
 
   static getOriginalCellWidths($thead) {
