@@ -24,7 +24,7 @@ const config = {
 
   plugins: [
     new webpack.BannerPlugin({
-      banner: `${pkg.name}\n${pkg.version}\nTested with jQuery 1.12+\n${pkg.repository.url}\nLicense: ${pkg.license}`,
+      banner: `${pkg.name}\n${pkg.version}\nRequires jQuery 1.12.0+\n${pkg.repository.url}\nLicense: ${pkg.license}`,
     }),
   ],
 

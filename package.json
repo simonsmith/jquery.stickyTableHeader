@@ -1,7 +1,7 @@
 {
   "name": "jquery-sticky-table-header",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "build/jquery.stickyTableHeader.js",
   "author": "Simon Smith",
   "license": "MIT",
   "devDependencies": {
@@ -21,6 +21,7 @@
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.5.5"
   },
+  "readmeFilename": "README.md",
   "peerDependencies": {
     "jquery": "^1.12.0"
   },
