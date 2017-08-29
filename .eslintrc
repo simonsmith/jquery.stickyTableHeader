@@ -4,13 +4,15 @@
   "env": {
     "browser": true,
     "jest": true,
-    "node": true
+    "node": true,
+    "jquery": true
   },
   "parserOptions": {
     "ecmaVersion": 6
   },
   "rules": {
     "vars-on-top": 0,
+    "arrow-body-style": 0,
     "comma-dangle": [2, "always-multiline"],
     "padded-blocks": ["error", { "classes": "always" }],
     "func-names": 0,

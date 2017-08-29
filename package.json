@@ -33,7 +33,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development webpack --watch",
     "lint": "eslint src test",
-    "test": "concurrently -k \"npm run server\" \"jest\"",
+    "test": "concurrently -k \"http-server -p 3002\" \"jest\"",
     "publish": "npm run build",
     "server": "http-server -p 3001 -c-1",
     "start": "concurrently \"npm run server\" \"npm run dev\""
