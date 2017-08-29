@@ -1,4 +1,5 @@
 const $ = require('jquery'); // eslint-disable-line import/no-unresolved
+const throttle = require('./throttle');
 
 class StickyTableHeader {
 
@@ -91,7 +92,11 @@ class StickyTableHeader {
   }
 
   attachScrollEvent() {
-    const {$win, $header, options: {css: {scrolling: scrollingClass}}} = this;
+    const {
+      $win,
+      $header,
+      options: {css: {scrolling: scrollingClass}, scrollThrottle},
+    } = this;
     const headerHeight = $header.outerHeight();
     const {
       topPos: tableTopPos,
@@ -100,7 +105,7 @@ class StickyTableHeader {
     } = this.tableSizes;
     let isScrollingTable = true;
 
-    $win.on('scroll.StickyTableHeader', () => {
+    const handler = () => {
       const scrollPos = $win.scrollTop();
       const scrollInsideTable = scrollPos > tableTopPos && scrollPos < (tableBottomPos - headerHeight);
       const scrollAboveTable = scrollPos < tableTopPos;
@@ -135,7 +140,9 @@ class StickyTableHeader {
         $header.removeClass(scrollingClass);
         isScrollingTable = true;
       }
-    });
+    };
+
+    $win.on('scroll.StickyTableHeader', throttle(handler, scrollThrottle));
   }
 
   detachScrollEvent() {
@@ -162,6 +169,7 @@ $.fn.stickyTableHeader = function(options) {
 $.fn.stickyTableHeader.StickyTableHeader = StickyTableHeader;
 $.fn.stickyTableHeader.defaults = {
   outsideViewportOnly: true,
+  scrollThrottle: 50,
   css: {
     header: 'StickyTableHeader',
     scrolling: 'is-scrolling',
