@@ -1,4 +1,4 @@
-# jquery.stickyTableHeader
+# jquery.stickyTableHeader [![Build Status](https://travis-ci.org/simonsmith/jquery.stickyTableHeader.svg?branch=master)](https://travis-ci.org/simonsmith/jquery.stickyTableHeader)
 
 A small and accessible jQuery plugin for adding sticky headers to large data tables.
 
