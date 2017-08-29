@@ -29,6 +29,10 @@ class StickyTableHeader {
       .append($clone);
   }
 
+  static logError(message) {
+    console.error(`StickyTableHeader:  + ${message}`); // eslint-disable-line no-console
+  }
+
   static getOriginalCellWidths($thead) {
     return $thead.find('tr').map(function() {
       return $(this).find('td, th').map(function() {
@@ -54,6 +58,12 @@ class StickyTableHeader {
     this.options = $.extend(true, {}, $.fn.stickyTableHeader.defaults, options);
 
     this.$table = this.$container.find('> table');
+
+    if (!this.$table.length) {
+      StickyTableHeader.logError('No table element found within container element');
+      return;
+    }
+
     this.$win = $(window);
     this.tableSizes = StickyTableHeader.getTableSizes(this.$table);
 
