@@ -72,6 +72,10 @@ There are a couple of HTML requirements for the plugin to function correctly:
 $('.table-container').stickyTableHeader();
 ```
 
+It's recommended that you apply a background colour to the header to mask the
+real table header beneath it. This is so that the table effectively looks
+unchanged to a screen reader.
+
 ## Options
 
 * **outsideViewportOnly** - _(boolean)_ Only run the plugin if the table is
