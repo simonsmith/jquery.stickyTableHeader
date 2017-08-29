@@ -86,7 +86,6 @@ class StickyTableHeader {
     StickyTableHeader.setCloneCellWidths(this.$header, cellWidths);
 
     this.$header.prependTo(this.$container);
-    this.$tableChildren.css('visibility', 'hidden');
     this.$container.css('position', 'relative');
     this.attachScrollEvent();
   }
