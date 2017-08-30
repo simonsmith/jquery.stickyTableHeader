@@ -47,7 +47,7 @@ however you want.
 
 ## Usage
 
-There are a couple of HTML requirements for the plugin to function correctly:
+There are some HTML requirements for the plugin to function correctly:
 
 * The table *must* be inside a containing element
 * There *must* be a `thead` element
@@ -73,8 +73,7 @@ $('.table-container').stickyTableHeader();
 ```
 
 It's recommended that you apply a background colour to the header to mask the
-real table header beneath it. This is so that the table effectively looks
-unchanged to a screen reader.
+real table header beneath it. 
 
 ## Options
 
@@ -93,4 +92,4 @@ unchanged to a screen reader.
 1. `npm install`
 1. `npm start`
 
-Access the demo at `http://localhost:3001/example`
+Run the tests with `npm test` and view the demo at `http://localhost:3002/test`

@@ -9,7 +9,7 @@ beforeEach(async () => {
     width: 1650,
     height: 800,
   });
-  await page.goto('http://localhost:3002/example');
+  await page.goto('http://localhost:3002/test');
 });
 
 afterEach(() => {
