@@ -30,6 +30,13 @@ test('sticky header is present and hidden from screenreaders', async () => {
   expect(attr).toBe('true');
 });
 
+test('active class is applied to the table', async () => {
+  const hasClass = await page.evaluate(() => {
+    return $('.table').eq(1).hasClass('is-stickyTableHeaderActive');
+  });
+  expect(hasClass).toBe(true);
+});
+
 test('existing class names are copied to the sticky header', async () => {
   const hasClass = await page.evaluate(() => {
     return $('.StickyTableHeader').eq(0).hasClass('table');

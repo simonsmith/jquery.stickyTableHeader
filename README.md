@@ -4,7 +4,7 @@ A small and accessible jQuery plugin for adding sticky headers to large data tab
 
 ## Demo
 
-https://codepen.io/simonsmith/full/yoQyKa/
+https://simonsmith.io/jquery.stickyTableHeader/test/
 
 ## Features
 
@@ -85,6 +85,7 @@ real table header beneath it.
 * **css** _(object)_  Classes applied to the HTML structure
   * **header** _(string)_ - Added to the header that scrolls with the table _default_ `StickyTableHeader`
   * **scrolling** _(string)_ - Added to the header when it is scrolling with the viewport _default_ `is-scrolling`
+  * **active** _(string)_ - Added to the original table when plugin is active _default_ `is-stickyTableHeaderActive`
 
 ## Development
 
