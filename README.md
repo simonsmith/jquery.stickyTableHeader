@@ -4,7 +4,7 @@ A small and accessible jQuery plugin for adding sticky headers to large data tab
 
 ## Demo
 
-https://codepen.io/simonsmith/full/yoQyKa/
+https://simonsmith.io/jquery.stickyTableHeader/test/
 
 ## Features
 
