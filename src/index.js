@@ -87,6 +87,7 @@ class StickyTableHeader {
 
     this.$header.prependTo(this.$container);
     this.$container.css('position', 'relative');
+    this.$table.addClass(this.options.css.active);
     this.attachScrollEvent();
   }
 
@@ -172,6 +173,7 @@ $.fn.stickyTableHeader.defaults = {
   css: {
     header: 'StickyTableHeader',
     scrolling: 'is-scrolling',
+    active: 'is-stickyTableHeaderActive',
   },
   zIndex: 2,
 };
