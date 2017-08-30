@@ -1,6 +1,6 @@
 /*!
  * jquery-sticky-table-header
- * 0.1.2
+ * 0.2.0
  * Requires jQuery 1.12.0+
  * https://github.com/simonsmith/jquery.stickyTableHeader/
  * License: MIT
@@ -68,7 +68,8 @@
                     this.$header = StickyTableHeader.constructHeader(this.$tableChildren, this.$table.attr("class"), this.tableSizes, this.options);
                     var cellWidths = StickyTableHeader.getOriginalCellWidths($thead);
                     StickyTableHeader.setCloneCellWidths(this.$header, cellWidths), this.$header.prependTo(this.$container), 
-                    this.$container.css("position", "relative"), this.attachScrollEvent();
+                    this.$container.css("position", "relative"), this.$table.addClass(this.options.css.active), 
+                    this.attachScrollEvent();
                 }
             }
             return _createClass(StickyTableHeader, null, [ {
@@ -168,7 +169,8 @@
             scrollThrottle: 50,
             css: {
                 header: "StickyTableHeader",
-                scrolling: "is-scrolling"
+                scrolling: "is-scrolling",
+                active: "is-stickyTableHeaderActive"
             },
             zIndex: 2
         };
