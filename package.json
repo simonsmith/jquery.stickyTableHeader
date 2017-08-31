@@ -34,7 +34,7 @@
     "dev": "cross-env NODE_ENV=development webpack --watch",
     "lint": "eslint src test",
     "test": "jest",
-    "publish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test-server": "http-server -p 3002 -s &",
     "server": "http-server -p 3002 -c-1",
     "start": "concurrently \"npm run server\" \"npm run dev\""
