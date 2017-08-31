@@ -1,6 +1,8 @@
 const $ = require('jquery'); // eslint-disable-line import/no-unresolved
 const throttle = require('./throttle');
 
+const PLUGIN_NAME = 'stickyTableHeader';
+
 class StickyTableHeader {
 
   static getTableSizes($table) {
@@ -31,7 +33,7 @@ class StickyTableHeader {
   }
 
   static logError(message) {
-    console.error(`StickyTableHeader: ${message}`); // eslint-disable-line no-console
+    console.error(`${PLUGIN_NAME}: ${message}`); // eslint-disable-line no-console
   }
 
   static getOriginalCellWidths($thead) {
@@ -142,11 +144,11 @@ class StickyTableHeader {
       }
     };
 
-    $win.on('scroll.StickyTableHeader', throttle(handler, scrollThrottle));
+    $win.on(`scroll.${PLUGIN_NAME}`, throttle(handler, scrollThrottle));
   }
 
   detachScrollEvent() {
-    this.$win.off('scroll.StickyTableHeader');
+    this.$win.off(`scroll.${PLUGIN_NAME}`);
   }
 
   destroy() {
@@ -160,8 +162,8 @@ class StickyTableHeader {
 $.fn.stickyTableHeader = function(options) {
   return this.each(function() {
     const $this = $(this);
-    if (!$this.data('stickyTableHeader')) {
-      $this.data('stickyTableHeader', new StickyTableHeader($this, options));
+    if (!$this.data(PLUGIN_NAME)) {
+      $this.data(PLUGIN_NAME, new StickyTableHeader($this, options));
     }
   });
 };
