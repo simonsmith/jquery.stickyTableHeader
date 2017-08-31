@@ -87,6 +87,20 @@ real table header beneath it.
   * **scrolling** _(string)_ - Added to the header when it is scrolling with the viewport _default_ `is-scrolling`
   * **active** _(string)_ - Added to the original table when plugin is active _default_ `is-stickyTableHeaderActive`
 
+## Methods
+
+You can get at the instance by accessing it from the elements `.data` method
+
+```js
+$('.table-container').stickyTableHeader();
+const instance = $('.table-container').data('stickyTableHeader');
+instance.destroy();
+```
+
+### destroy
+
+Removes the sticky header element and scroll listener
+
 ## Development
 
 1. Clone the repository
