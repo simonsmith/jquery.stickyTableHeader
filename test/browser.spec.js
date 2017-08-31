@@ -93,6 +93,24 @@ test('sticky header is set to fixed when scrolling', async () => {
   expect(hasClass).toBe(true);
 });
 
+test('plugin can be destroyed', async () => {
+  await page.evaluate(() => {
+    $(window).scrollTop(300);
+  });
+  await page.waitFor(100);
+  let headerTotal = await page.evaluate(() => {
+    return $('.StickyTableHeader').length;
+  });
+  expect(headerTotal).toBe(2);
+
+  headerTotal = await page.evaluate(() => {
+    const instance = $('.table-container').eq(0).data('stickyTableHeader');
+    instance.destroy();
+    return $('.StickyTableHeader').length;
+  });
+  expect(headerTotal).toBe(1);
+});
+
 test('sticky header is fixed to the bottom of the table when scroll reaches bottom', async () => {
   await page.evaluate(() => {
     $(window).scrollTop(1627);

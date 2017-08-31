@@ -155,6 +155,7 @@ class StickyTableHeader {
     this.$header.remove();
     this.$tableChildren.css('visibility', 'visible');
     this.detachScrollEvent();
+    this.$container.removeData(PLUGIN_NAME);
   }
 
 }
