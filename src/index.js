@@ -97,7 +97,7 @@ class StickyTableHeader {
     const {
       $win,
       $header,
-      options: {css: {scrolling: scrollingClass}, scrollThrottle},
+      options: {css: {scrolling: scrollingClass}, topOffset, scrollThrottle},
     } = this;
     const headerHeight = $header.outerHeight();
     const {
@@ -116,7 +116,7 @@ class StickyTableHeader {
       if (scrollInsideTable && isScrollingTable) {
         $header.css({
           position: 'fixed',
-          top: 0,
+          top: topOffset,
           width,
         });
         $header.addClass(scrollingClass);
@@ -125,7 +125,7 @@ class StickyTableHeader {
       if (scrollAboveTable && !isScrollingTable) {
         $header.css({
           position: 'absolute',
-          top: 0,
+          top: topOffset,
           bottom: 0,
           width,
         });
@@ -173,6 +173,7 @@ $.fn.stickyTableHeader.StickyTableHeader = StickyTableHeader;
 $.fn.stickyTableHeader.defaults = {
   outsideViewportOnly: true,
   scrollThrottle: 50,
+  topOffset: 0,
   css: {
     header: 'StickyTableHeader',
     scrolling: 'is-scrolling',
