@@ -1,6 +1,6 @@
 /*!
  * jquery-sticky-table-header
- * 0.2.0
+ * 0.2.2
  * Requires jQuery 1.12.0+
  * https://github.com/simonsmith/jquery.stickyTableHeader/
  * License: MIT
@@ -10,7 +10,7 @@
         var a = factory("object" == typeof exports ? require("jquery") : root.jQuery);
         for (var i in a) ("object" == typeof exports ? exports : root)[i] = a[i];
     }
-}(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+}("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
     return function(modules) {
         function __webpack_require__(moduleId) {
             if (installedModules[moduleId]) return installedModules[moduleId].exports;
@@ -57,7 +57,7 @@
                 return protoProps && defineProperties(Constructor.prototype, protoProps), staticProps && defineProperties(Constructor, staticProps), 
                 Constructor;
             };
-        }(), $ = __webpack_require__(1), throttle = __webpack_require__(2), StickyTableHeader = function() {
+        }(), $ = __webpack_require__(1), throttle = __webpack_require__(2), PLUGIN_NAME = "stickyTableHeader", StickyTableHeader = function() {
             function StickyTableHeader($container, options) {
                 if (_classCallCheck(this, StickyTableHeader), this.$container = $container, this.options = $.extend(!0, {}, $.fn.stickyTableHeader.defaults, options), 
                 this.$table = this.$container.find("> table"), !this.$table.length) return void StickyTableHeader.logError("No table element found within container element");
@@ -100,7 +100,7 @@
             }, {
                 key: "logError",
                 value: function(message) {
-                    console.error("StickyTableHeader: " + message);
+                    console.error(PLUGIN_NAME + ": " + message);
                 }
             }, {
                 key: "getOriginalCellWidths",
@@ -145,24 +145,27 @@
                             width: width
                         }), $header.removeClass(scrollingClass), isScrollingTable = !0);
                     };
-                    $win.on("scroll.StickyTableHeader", throttle(handler, scrollThrottle));
+                    $win.on("scroll." + PLUGIN_NAME, throttle(handler, scrollThrottle, {
+                        leading: !0
+                    }));
                 }
             }, {
                 key: "detachScrollEvent",
                 value: function() {
-                    this.$win.off("scroll.StickyTableHeader");
+                    this.$win.off("scroll." + PLUGIN_NAME);
                 }
             }, {
                 key: "destroy",
                 value: function() {
-                    this.$header.remove(), this.$tableChildren.css("visibility", "visible"), this.detachScrollEvent();
+                    this.$header.remove(), this.$tableChildren.css("visibility", "visible"), this.detachScrollEvent(), 
+                    this.$container.removeData(PLUGIN_NAME);
                 }
             } ]), StickyTableHeader;
         }();
         $.fn.stickyTableHeader = function(options) {
             return this.each(function() {
                 var $this = $(this);
-                $this.data("stickyTableHeader") || $this.data("stickyTableHeader", new StickyTableHeader($this, options));
+                $this.data(PLUGIN_NAME) || $this.data(PLUGIN_NAME, new StickyTableHeader($this, options));
             });
         }, $.fn.stickyTableHeader.StickyTableHeader = StickyTableHeader, $.fn.stickyTableHeader.defaults = {
             outsideViewportOnly: !0,
@@ -177,16 +180,100 @@
     }, function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
     }, function(module, exports, __webpack_require__) {
-        "use strict";
-        function throttle(callback, wait) {
-            var context = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : this, timeout = null, callbackArgs = null, later = function() {
-                callback.apply(context, callbackArgs), timeout = null;
+        (function(global) {
+            function debounce(func, wait, options) {
+                function invokeFunc(time) {
+                    var args = lastArgs, thisArg = lastThis;
+                    return lastArgs = lastThis = void 0, lastInvokeTime = time, result = func.apply(thisArg, args);
+                }
+                function leadingEdge(time) {
+                    return lastInvokeTime = time, timerId = setTimeout(timerExpired, wait), leading ? invokeFunc(time) : result;
+                }
+                function remainingWait(time) {
+                    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, result = wait - timeSinceLastCall;
+                    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+                }
+                function shouldInvoke(time) {
+                    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
+                    return void 0 === lastCallTime || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+                }
+                function timerExpired() {
+                    var time = now();
+                    if (shouldInvoke(time)) return trailingEdge(time);
+                    timerId = setTimeout(timerExpired, remainingWait(time));
+                }
+                function trailingEdge(time) {
+                    return timerId = void 0, trailing && lastArgs ? invokeFunc(time) : (lastArgs = lastThis = void 0, 
+                    result);
+                }
+                function cancel() {
+                    void 0 !== timerId && clearTimeout(timerId), lastInvokeTime = 0, lastArgs = lastCallTime = lastThis = timerId = void 0;
+                }
+                function flush() {
+                    return void 0 === timerId ? result : trailingEdge(now());
+                }
+                function debounced() {
+                    var time = now(), isInvoking = shouldInvoke(time);
+                    if (lastArgs = arguments, lastThis = this, lastCallTime = time, isInvoking) {
+                        if (void 0 === timerId) return leadingEdge(lastCallTime);
+                        if (maxing) return timerId = setTimeout(timerExpired, wait), invokeFunc(lastCallTime);
+                    }
+                    return void 0 === timerId && (timerId = setTimeout(timerExpired, wait)), result;
+                }
+                var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = !1, maxing = !1, trailing = !0;
+                if ("function" != typeof func) throw new TypeError(FUNC_ERROR_TEXT);
+                return wait = toNumber(wait) || 0, isObject(options) && (leading = !!options.leading, 
+                maxing = "maxWait" in options, maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait, 
+                trailing = "trailing" in options ? !!options.trailing : trailing), debounced.cancel = cancel, 
+                debounced.flush = flush, debounced;
+            }
+            function throttle(func, wait, options) {
+                var leading = !0, trailing = !0;
+                if ("function" != typeof func) throw new TypeError(FUNC_ERROR_TEXT);
+                return isObject(options) && (leading = "leading" in options ? !!options.leading : leading, 
+                trailing = "trailing" in options ? !!options.trailing : trailing), debounce(func, wait, {
+                    leading: leading,
+                    maxWait: wait,
+                    trailing: trailing
+                });
+            }
+            function isObject(value) {
+                var type = typeof value;
+                return !!value && ("object" == type || "function" == type);
+            }
+            function isObjectLike(value) {
+                return !!value && "object" == typeof value;
+            }
+            function isSymbol(value) {
+                return "symbol" == typeof value || isObjectLike(value) && objectToString.call(value) == symbolTag;
+            }
+            function toNumber(value) {
+                if ("number" == typeof value) return value;
+                if (isSymbol(value)) return NAN;
+                if (isObject(value)) {
+                    var other = "function" == typeof value.valueOf ? value.valueOf() : value;
+                    value = isObject(other) ? other + "" : other;
+                }
+                if ("string" != typeof value) return 0 === value ? value : +value;
+                value = value.replace(reTrim, "");
+                var isBinary = reIsBinary.test(value);
+                return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+            }
+            var FUNC_ERROR_TEXT = "Expected a function", NAN = NaN, symbolTag = "[object Symbol]", reTrim = /^\s+|\s+$/g, reIsBadHex = /^[-+]0x[0-9a-f]+$/i, reIsBinary = /^0b[01]+$/i, reIsOctal = /^0o[0-7]+$/i, freeParseInt = parseInt, freeGlobal = "object" == typeof global && global && global.Object === Object && global, freeSelf = "object" == typeof self && self && self.Object === Object && self, root = freeGlobal || freeSelf || Function("return this")(), objectProto = Object.prototype, objectToString = objectProto.toString, nativeMax = Math.max, nativeMin = Math.min, now = function() {
+                return root.Date.now();
             };
-            return function() {
-                for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
-                timeout || (callbackArgs = args, timeout = setTimeout(later, wait));
-            };
+            module.exports = throttle;
+        }).call(exports, __webpack_require__(3));
+    }, function(module, exports) {
+        var g;
+        g = function() {
+            return this;
+        }();
+        try {
+            g = g || Function("return this")() || (0, eval)("this");
+        } catch (e) {
+            "object" == typeof window && (g = window);
         }
-        module.exports = throttle;
+        module.exports = g;
     } ]);
 });
