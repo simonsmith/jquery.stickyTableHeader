@@ -109,11 +109,11 @@ Removes the sticky header element and scroll listener
 
 ## Development
 
-[yarn](https://yarnpkg.com/) is required or you can use `npm` to run the tasks
-yourself
+[yarn](https://yarnpkg.com/) is required or you can use `npm` to run the
+individual scripts yourself
 
 1. Clone the repository
 1. `yarn install`
 1. `yarn start`
 
-Run the tests with `npm test` and view the demo at `http://localhost:3002/test`
+Run the tests with `yarn test` and view the demo at `http://localhost:3002/test`
