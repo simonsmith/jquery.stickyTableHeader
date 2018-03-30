@@ -36,7 +36,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development webpack --watch",
-    "lint": "eslint src test/browser.spec.js",
+    "lint": "eslint src webpack.config.js test/browser.spec.js",
     "posttest": "yarn run lint",
     "test": "jest",
     "prepublishOnly": "yarn run build",
