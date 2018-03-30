@@ -1,8 +1,9 @@
 const $ = require('jquery'); // eslint-disable-line import/no-unresolved
-const throttle = require('./throttle');
+const throttle = require('lodash.throttle');
+
+const PLUGIN_NAME = 'stickyTableHeader';
 
 class StickyTableHeader {
-
   static getTableSizes($table) {
     const offset = $table.offset();
     const height = $table.outerHeight();
@@ -14,7 +15,12 @@ class StickyTableHeader {
     };
   }
 
-  static constructHeader($tableChildren, origTableClassName, {width}, {css: {header}, zIndex}) {
+  static constructHeader(
+    $tableChildren,
+    origTableClassName,
+    {width},
+    {css: {header}, zIndex}
+  ) {
     const $clone = $tableChildren.clone(true);
     return $('<table/>', {
       'aria-hidden': true,
@@ -31,26 +37,30 @@ class StickyTableHeader {
   }
 
   static logError(message) {
-    console.error(`StickyTableHeader: ${message}`); // eslint-disable-line no-console
+    console.error(`${PLUGIN_NAME}: ${message}`); // eslint-disable-line no-console
   }
 
   static getOriginalCellWidths($thead) {
     return $thead.find('tr').map(function() {
-      return $(this).find('td, th').map(function() {
-        return this.getBoundingClientRect().width;
-      });
+      return $(this)
+        .find('td, th')
+        .map(function() {
+          return this.getBoundingClientRect().width;
+        });
     });
   }
 
   static setCloneCellWidths($header, widths) {
     $header.find('tr').each(function(trIndex) {
-      $(this).find('th, td').each(function(cellIndex) {
-        const width = widths[trIndex][cellIndex];
-        $(this).css({
-          boxSizing: 'border-box',
-          width,
+      $(this)
+        .find('th, td')
+        .each(function(cellIndex) {
+          const width = widths[trIndex][cellIndex];
+          $(this).css({
+            boxSizing: 'border-box',
+            width,
+          });
         });
-      });
     });
   }
 
@@ -61,14 +71,19 @@ class StickyTableHeader {
     this.$table = this.$container.find('> table');
 
     if (!this.$table.length) {
-      StickyTableHeader.logError('No table element found within container element');
+      StickyTableHeader.logError(
+        'No table element found within container element'
+      );
       return;
     }
 
     this.$win = $(window);
     this.tableSizes = StickyTableHeader.getTableSizes(this.$table);
 
-    if (this.options.outsideViewportOnly && this.tableSizes.height < this.$win.height()) {
+    if (
+      this.options.outsideViewportOnly &&
+      this.tableSizes.height < this.$win.height()
+    ) {
       return;
     }
 
@@ -107,9 +122,10 @@ class StickyTableHeader {
 
     const handler = () => {
       const scrollPos = $win.scrollTop();
-      const scrollInsideTable = scrollPos > tableTopPos && scrollPos < (tableBottomPos - headerHeight);
+      const scrollInsideTable =
+        scrollPos > tableTopPos && scrollPos < tableBottomPos - headerHeight;
       const scrollAboveTable = scrollPos < tableTopPos;
-      const scrollBelowTable = scrollPos > (tableBottomPos - headerHeight);
+      const scrollBelowTable = scrollPos > tableBottomPos - headerHeight;
 
       if (scrollInsideTable && isScrollingTable) {
         $header.css({
@@ -142,26 +158,29 @@ class StickyTableHeader {
       }
     };
 
-    $win.on('scroll.StickyTableHeader', throttle(handler, scrollThrottle));
+    $win.on(
+      `scroll.${PLUGIN_NAME}`,
+      throttle(handler, scrollThrottle, {leading: true})
+    );
   }
 
   detachScrollEvent() {
-    this.$win.off('scroll.StickyTableHeader');
+    this.$win.off(`scroll.${PLUGIN_NAME}`);
   }
 
   destroy() {
     this.$header.remove();
     this.$tableChildren.css('visibility', 'visible');
     this.detachScrollEvent();
+    this.$container.removeData(PLUGIN_NAME);
   }
-
 }
 
 $.fn.stickyTableHeader = function(options) {
   return this.each(function() {
     const $this = $(this);
-    if (!$this.data('stickyTableHeader')) {
-      $this.data('stickyTableHeader', new StickyTableHeader($this, options));
+    if (!$this.data(PLUGIN_NAME)) {
+      $this.data(PLUGIN_NAME, new StickyTableHeader($this, options));
     }
   });
 };
