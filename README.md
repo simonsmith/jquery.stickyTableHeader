@@ -18,7 +18,8 @@ https://simonsmith.io/jquery.stickyTableHeader/test/
 
 ### npm
 
-It's recommended to `require`/`import` the plugin as part of an existing webpack or browserify setup:
+It's recommended to `require`/`import` the plugin as part of an existing [webpack](https://webpack.js.org/)
+or [browserify](http://browserify.org/) setup:
 
 ```
 npm install jquery jquery-sticky-table-header --save
@@ -36,9 +37,14 @@ application.
 
 ### Manual
 
-Clone the repository and run `npm install && npm run build`. This will generate
-a UMD version of the plugin in `./build` that can be dropped into a project
-however you want.
+1. Clone the repository
+1. `yarn && yarn run build` or `npm install && npm run build`
+1. A [UMD
+   version](https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/) of
+   the plugin will be available in the `./build` directory.
+1. Include it in your project as needed
+
+**Example**
 
 ```html
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -73,7 +79,7 @@ $('.table-container').stickyTableHeader();
 ```
 
 It's recommended that you apply a background colour to the header to mask the
-real table header beneath it. 
+real table header beneath it.
 
 ## Options
 
@@ -103,8 +109,11 @@ Removes the sticky header element and scroll listener
 
 ## Development
 
+[yarn](https://yarnpkg.com/) is required or you can use `npm` to run the tasks
+yourself
+
 1. Clone the repository
-1. `npm install`
-1. `npm start`
+1. `yarn install`
+1. `yarn start`
 
 Run the tests with `npm test` and view the demo at `http://localhost:3002/test`

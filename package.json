@@ -34,9 +34,9 @@
     "dev": "cross-env NODE_ENV=development webpack --watch",
     "lint": "eslint src test",
     "test": "jest",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "yarn run build",
     "test-server": "http-server -p 3002 -s &",
     "server": "http-server -p 3002 -c-1",
-    "start": "concurrently \"npm run server\" \"npm run dev\""
+    "start": "concurrently \"yarn run server\" \"yarn run dev\""
   }
 }
