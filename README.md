@@ -113,7 +113,7 @@ Removes the sticky header element and scroll listener
 individual scripts yourself
 
 1. Clone the repository
-1. `yarn install`
+1. `yarn`
 1. `yarn start`
 
 Run the tests with `yarn test` and view the demo at `http://localhost:3002/test`

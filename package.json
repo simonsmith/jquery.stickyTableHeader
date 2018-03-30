@@ -1,6 +1,6 @@
 {
   "name": "jquery-sticky-table-header",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "main": "build/jquery.stickyTableHeader.js",
   "author": "Simon Smith",
   "license": "MIT",
@@ -37,6 +37,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development webpack --watch",
     "lint": "eslint src webpack.config.js test/browser.spec.js",
+    "pretest": "yarn run build",
     "posttest": "yarn run lint",
     "test": "jest",
     "prepublishOnly": "yarn run build",
