@@ -1,5 +1,5 @@
 const $ = require('jquery'); // eslint-disable-line import/no-unresolved
-const throttle = require('./throttle');
+const throttle = require('lodash.throttle');
 
 const PLUGIN_NAME = 'stickyTableHeader';
 
@@ -158,7 +158,10 @@ class StickyTableHeader {
       }
     };
 
-    $win.on(`scroll.${PLUGIN_NAME}`, throttle(handler, scrollThrottle));
+    $win.on(
+      `scroll.${PLUGIN_NAME}`,
+      throttle(handler, scrollThrottle, {leading: true})
+    );
   }
 
   detachScrollEvent() {

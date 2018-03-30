@@ -42,5 +42,8 @@
     "prepublishOnly": "yarn run build",
     "server": "http-server -p 3002 -c-1",
     "start": "concurrently \"yarn run server\" \"yarn run dev\""
+  },
+  "dependencies": {
+    "lodash.throttle": "^4.1.1"
   }
 }
