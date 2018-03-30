@@ -1,6 +1,6 @@
 /*!
  * jquery-sticky-table-header
- * 0.2.2
+ * 1.0.0
  * Requires jQuery 1.12.0+
  * https://github.com/simonsmith/jquery.stickyTableHeader/
  * License: MIT
