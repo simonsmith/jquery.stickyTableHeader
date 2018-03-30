@@ -3,6 +3,5 @@ sudo: false
 node_js:
   - "stable"
 script:
-  - "yarn run build"
-  - "yarn run test-server"
-  - "yarn test"
+  - "npm run build"
+  - "npm test"

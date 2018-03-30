@@ -1,19 +1,9 @@
-const puppeteer = require('puppeteer');
-
-let browser, page;
-
 beforeEach(async () => {
-  browser = await puppeteer.launch();
-  page = await browser.newPage();
   await page.setViewport({
     width: 1650,
     height: 800,
   });
-  await page.goto('http://localhost:3002/test');
-});
-
-afterEach(() => {
-  browser.close();
+  await page.goto('http://localhost:3001/test');
 });
 
 test('table container has position relative', async () => {

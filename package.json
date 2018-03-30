@@ -17,6 +17,7 @@
     "eslint-plugin-import": "^2.7.0",
     "http-server": "^0.11.1",
     "jest": "^22.4.3",
+    "jest-puppeteer": "^2.2.1",
     "puppeteer": "^1.2.0",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.5.5"
@@ -35,7 +36,6 @@
     "lint": "eslint src test",
     "test": "jest",
     "prepublishOnly": "yarn run build",
-    "test-server": "http-server -p 3002 -s &",
     "server": "http-server -p 3002 -c-1",
     "start": "concurrently \"yarn run server\" \"yarn run dev\""
   }
