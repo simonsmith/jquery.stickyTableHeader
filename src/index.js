@@ -19,7 +19,10 @@ class StickyTableHeader {
     $tableChildren,
     origTableClassName,
     {width},
-    {css: {header}, zIndex}
+    {
+      css: {header},
+      zIndex,
+    }
   ) {
     const $clone = $tableChildren.clone(true);
     return $('<table/>', {
@@ -110,7 +113,10 @@ class StickyTableHeader {
     const {
       $win,
       $header,
-      options: {css: {scrolling: scrollingClass}, scrollThrottle},
+      options: {
+        css: {scrolling: scrollingClass},
+        scrollThrottle,
+      },
     } = this;
     const headerHeight = $header.outerHeight();
     const {
