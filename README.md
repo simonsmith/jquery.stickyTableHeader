@@ -55,7 +55,7 @@ application.
 
 There are some HTML requirements for the plugin to function correctly:
 
-* The table *must* be inside a containing element
+* The table *must* be inside a containing element with no siblings
 * There *must* be a `thead` element
 * There *must* be a `tbody` element
 
