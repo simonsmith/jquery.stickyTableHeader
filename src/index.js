@@ -2,6 +2,7 @@ const $ = require('jquery'); // eslint-disable-line import/no-unresolved
 const throttle = require('lodash.throttle');
 
 const PLUGIN_NAME = 'stickyTableHeader';
+let instanceCount = 1;
 
 class StickyTableHeader {
   static getTableSizes($table) {
@@ -72,6 +73,7 @@ class StickyTableHeader {
   constructor($container, options) {
     this.$container = $container;
     this.options = $.extend(true, {}, $.fn.stickyTableHeader.defaults, options);
+    this.id = instanceCount++;
 
     this.$table = this.$container.find('> table');
 
@@ -168,13 +170,13 @@ class StickyTableHeader {
     };
 
     $win.on(
-      `scroll.${PLUGIN_NAME}`,
+      `scroll.${PLUGIN_NAME}-${this.id}`,
       throttle(handler, scrollThrottle, {leading: true})
     );
   }
 
   detachScrollEvent() {
-    this.$win.off(`scroll.${PLUGIN_NAME}`);
+    this.$win.off(`scroll.${PLUGIN_NAME}-${this.id}`);
   }
 
   destroy() {
