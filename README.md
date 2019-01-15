@@ -88,6 +88,9 @@ real table header beneath it.
 * **scrollThrottle** - _(number)_ Maximum number of times the scroll handler
   can be called over time in milliseconds _default_ `50`
 * **zIndex** - _(number)_ Added to the header to control stacking _default_ `2`
+* **offset** _(object)_  Offset values for the header
+  * **top** _(number)_ - Offset (in pixels) applied to the header `top` _default_ 0
+  * **topScrolling** _(string)_ - Offset (in pixels) applied to the header `top` _default_ 0
 * **css** _(object)_  Classes applied to the HTML structure
   * **header** _(string)_ - Added to the header that scrolls with the table _default_ `StickyTableHeader`
   * **scrolling** _(string)_ - Added to the header when it is scrolling with the viewport _default_ `is-scrolling`
