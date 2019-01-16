@@ -1,6 +1,6 @@
 # jquery.stickyTableHeader [![Build Status](https://travis-ci.org/simonsmith/jquery.stickyTableHeader.svg?branch=master)](https://travis-ci.org/simonsmith/jquery.stickyTableHeader)
 
-A small and accessible jQuery plugin for adding sticky headers to large data tables.
+A small (2.4kb gzipped) and accessible jQuery plugin for adding sticky headers to large data tables.
 
 ## Demo
 
@@ -55,7 +55,7 @@ application.
 
 There are some HTML requirements for the plugin to function correctly:
 
-* The table *must* be inside a containing element
+* The table *must* be inside a containing element with no siblings
 * There *must* be a `thead` element
 * There *must* be a `tbody` element
 
@@ -88,6 +88,9 @@ real table header beneath it.
 * **scrollThrottle** - _(number)_ Maximum number of times the scroll handler
   can be called over time in milliseconds _default_ `50`
 * **zIndex** - _(number)_ Added to the header to control stacking _default_ `2`
+* **offset** _(object)_  Offset values for the header
+  * **top** _(number)_ - Offset (in pixels) applied to the header `top` _default_ 0
+  * **topScrolling** _(string)_ - Offset (in pixels) applied to the header whilst scrolling `top` _default_ 0
 * **css** _(object)_  Classes applied to the HTML structure
   * **header** _(string)_ - Added to the header that scrolls with the table _default_ `StickyTableHeader`
   * **scrolling** _(string)_ - Added to the header when it is scrolling with the viewport _default_ `is-scrolling`

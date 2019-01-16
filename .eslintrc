@@ -18,6 +18,7 @@
   "rules": {
     "prettier/prettier": "error",
     "vars-on-top": 0,
+    "no-plusplus": 0,
     "func-names": 0,
     "one-var": ["error", {"initialized": "never", "uninitialized": "always"}],
     "one-var-declaration-per-line": 0,

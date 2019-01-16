@@ -2,6 +2,7 @@ const $ = require('jquery'); // eslint-disable-line import/no-unresolved
 const throttle = require('lodash.throttle');
 
 const PLUGIN_NAME = 'stickyTableHeader';
+let instanceCount = 1;
 
 class StickyTableHeader {
   static getTableSizes($table) {
@@ -19,7 +20,11 @@ class StickyTableHeader {
     $tableChildren,
     origTableClassName,
     {width},
-    {css: {header}, zIndex}
+    {
+      css: {header},
+      offset: {top},
+      zIndex,
+    }
   ) {
     const $clone = $tableChildren.clone(true);
     return $('<table/>', {
@@ -28,6 +33,7 @@ class StickyTableHeader {
     })
       .addClass(origTableClassName)
       .css({
+        top,
         position: 'absolute',
         boxSizing: 'border-box',
         zIndex,
@@ -67,6 +73,7 @@ class StickyTableHeader {
   constructor($container, options) {
     this.$container = $container;
     this.options = $.extend(true, {}, $.fn.stickyTableHeader.defaults, options);
+    this.id = instanceCount++;
 
     this.$table = this.$container.find('> table');
 
@@ -110,7 +117,11 @@ class StickyTableHeader {
     const {
       $win,
       $header,
-      options: {css: {scrolling: scrollingClass}, scrollThrottle},
+      options: {
+        css: {scrolling: scrollingClass},
+        scrollThrottle,
+        offset: {top, topScrolling},
+      },
     } = this;
     const headerHeight = $header.outerHeight();
     const {
@@ -130,7 +141,7 @@ class StickyTableHeader {
       if (scrollInsideTable && isScrollingTable) {
         $header.css({
           position: 'fixed',
-          top: 0,
+          top: topScrolling,
           width,
         });
         $header.addClass(scrollingClass);
@@ -139,7 +150,7 @@ class StickyTableHeader {
       if (scrollAboveTable && !isScrollingTable) {
         $header.css({
           position: 'absolute',
-          top: 0,
+          top,
           bottom: 0,
           width,
         });
@@ -159,18 +170,19 @@ class StickyTableHeader {
     };
 
     $win.on(
-      `scroll.${PLUGIN_NAME}`,
+      `scroll.${PLUGIN_NAME}-${this.id}`,
       throttle(handler, scrollThrottle, {leading: true})
     );
   }
 
   detachScrollEvent() {
-    this.$win.off(`scroll.${PLUGIN_NAME}`);
+    this.$win.off(`scroll.${PLUGIN_NAME}-${this.id}`);
   }
 
   destroy() {
+    this.$container.css('position', '');
+    this.$table.removeClass(this.options.css.active);
     this.$header.remove();
-    this.$tableChildren.css('visibility', 'visible');
     this.detachScrollEvent();
     this.$container.removeData(PLUGIN_NAME);
   }
@@ -189,6 +201,10 @@ $.fn.stickyTableHeader.StickyTableHeader = StickyTableHeader;
 $.fn.stickyTableHeader.defaults = {
   outsideViewportOnly: true,
   scrollThrottle: 50,
+  offset: {
+    top: 0,
+    topScrolling: 0,
+  },
   css: {
     header: 'StickyTableHeader',
     scrolling: 'is-scrolling',

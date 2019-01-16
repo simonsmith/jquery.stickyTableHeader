@@ -111,6 +111,38 @@ test('plugin can be destroyed', async () => {
   expect(headerTotal).toBe(1);
 });
 
+test('offset can be applied', async () => {
+  await page.evaluate(() => {
+    $('.table-container')
+      .data('stickyTableHeader')
+      .destroy();
+    $('.table-container').stickyTableHeader({
+      offset: {
+        top: 50,
+        topScrolling: 100,
+      },
+    });
+  });
+  const initialTop = await page.evaluate(() =>
+    $('.StickyTableHeader')
+      .eq(0)
+      .css(['top'])
+  );
+  expect(initialTop).toEqual({top: '50px'});
+
+  await page.evaluate(() => {
+    $(window).scrollTop(300);
+  });
+  await page.waitFor(100);
+
+  const scrollTop = await page.evaluate(() =>
+    $('.StickyTableHeader')
+      .eq(0)
+      .css(['top'])
+  );
+  expect(scrollTop).toEqual({top: '100px'});
+});
+
 test('sticky header is fixed to the bottom of the table when scroll reaches bottom', async () => {
   await page.evaluate(() => {
     $(window).scrollTop(1627);
