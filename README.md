@@ -4,7 +4,7 @@ A small (2.4kb gzipped) and accessible jQuery plugin for adding sticky headers t
 
 ## Demo
 
-https://simonsmith.io/jquery.stickyTableHeader/test/
+https://simonsmith.github.io/jquery.stickyTableHeader/test/
 
 ## Features
 
