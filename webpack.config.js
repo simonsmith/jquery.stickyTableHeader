@@ -1,9 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 const pkg = require('./package.json');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
+  mode: process.env.NODE_ENV,
   entry: './src/index.js',
 
   output: {
@@ -38,18 +39,25 @@ const config = {
       root: 'jQuery',
     },
   },
+
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            beautify: true,
+            comments: /^!/,
+          },
+          compress: false,
+          mangle: false,
+        },
+      }),
+    ],
+  },
 };
 
 if (process.env.NODE_ENV === 'development') {
   config.devtool = 'source-map';
-}
-if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(
-    new UglifyJsPlugin({
-      beautify: true,
-      mangle: false,
-    })
-  );
 }
 
 module.exports = config;
