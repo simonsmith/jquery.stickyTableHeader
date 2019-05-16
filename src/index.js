@@ -17,7 +17,7 @@ class StickyTableHeader {
   }
 
   static constructHeader(
-    $tableChildren,
+    $thead,
     origTableClassName,
     {width},
     {
@@ -26,7 +26,7 @@ class StickyTableHeader {
       zIndex,
     }
   ) {
-    const $clone = $tableChildren.clone(true);
+    const $clone = $thead.clone(true);
     return $('<table/>', {
       'aria-hidden': true,
       class: header,
@@ -94,11 +94,10 @@ class StickyTableHeader {
       return;
     }
 
-    this.$tableChildren = this.$table.children(':not(tbody)');
-    const $thead = this.$tableChildren.filter('thead');
+    const $thead = this.$table.children('thead');
 
     this.$header = StickyTableHeader.constructHeader(
-      this.$tableChildren,
+      $thead,
       this.$table.attr('class'),
       this.tableSizes,
       this.options
