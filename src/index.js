@@ -5,69 +5,8 @@ const PLUGIN_NAME = 'stickyTableHeader';
 let instanceCount = 1;
 
 class StickyTableHeader {
-  static getTableSizes($table) {
-    const offset = $table.offset();
-    const height = $table.outerHeight();
-    return {
-      bottomPos: offset.top + height,
-      height,
-      topPos: offset.top,
-      width: $table.outerWidth(),
-    };
-  }
-
-  static constructHeader(
-    $thead,
-    origTableClassName,
-    {width},
-    {
-      css: {header},
-      offset: {top},
-      zIndex,
-    }
-  ) {
-    const $clone = $thead.clone(true);
-    return $('<table/>', {
-      'aria-hidden': true,
-      class: header,
-    })
-      .addClass(origTableClassName)
-      .css({
-        top,
-        position: 'absolute',
-        boxSizing: 'border-box',
-        zIndex,
-        width,
-      })
-      .append($clone);
-  }
-
   static logError(message) {
     console.error(`${PLUGIN_NAME}: ${message}`); // eslint-disable-line no-console
-  }
-
-  static getOriginalCellWidths($thead) {
-    return $thead.find('tr').map(function() {
-      return $(this)
-        .find('td, th')
-        .map(function() {
-          return this.getBoundingClientRect().width;
-        });
-    });
-  }
-
-  static setCloneCellWidths($header, widths) {
-    $header.find('tr').each(function(trIndex) {
-      $(this)
-        .find('th, td')
-        .each(function(cellIndex) {
-          const width = widths[trIndex][cellIndex];
-          $(this).css({
-            boxSizing: 'border-box',
-            width,
-          });
-        });
-    });
   }
 
   constructor($container, options) {
@@ -85,7 +24,7 @@ class StickyTableHeader {
     }
 
     this.$win = $(window);
-    this.tableSizes = StickyTableHeader.getTableSizes(this.$table);
+    this.tableSizes = this.getTableSizes();
 
     if (
       this.options.outsideViewportOnly &&
@@ -94,22 +33,75 @@ class StickyTableHeader {
       return;
     }
 
-    const $thead = this.$table.children('thead');
+    this.$thead = this.$table.children('thead');
+    this.$header = this.constructHeader();
 
-    this.$header = StickyTableHeader.constructHeader(
-      $thead,
-      this.$table.attr('class'),
-      this.tableSizes,
-      this.options
-    );
-
-    const cellWidths = StickyTableHeader.getOriginalCellWidths($thead);
-    StickyTableHeader.setCloneCellWidths(this.$header, cellWidths);
+    const cellWidths = this.getOriginalCellWidths();
+    this.setCloneCellWidths(cellWidths);
 
     this.$header.prependTo(this.$container);
     this.$container.css('position', 'relative');
     this.$table.addClass(this.options.css.active);
     this.attachScrollEvent();
+  }
+
+  getTableSizes() {
+    const offset = this.$table.offset();
+    const height = this.$table.outerHeight();
+    return {
+      bottomPos: offset.top + height,
+      height,
+      topPos: offset.top,
+      width: this.$table.outerWidth(),
+    };
+  }
+
+  constructHeader() {
+    const {
+      css: {header},
+      offset: {top},
+      zIndex,
+    } = this.options;
+    const {width} = this.tableSizes;
+    const $clone = this.$thead.clone(true);
+
+    return $('<table/>', {
+      'aria-hidden': true,
+      class: header,
+    })
+      .addClass(this.$table.attr('class'))
+      .css({
+        top,
+        position: 'absolute',
+        boxSizing: 'border-box',
+        zIndex,
+        width,
+      })
+      .append($clone);
+  }
+
+  getOriginalCellWidths() {
+    return this.$thead.find('tr').map(function() {
+      return $(this)
+        .find('td, th')
+        .map(function() {
+          return this.getBoundingClientRect().width;
+        });
+    });
+  }
+
+  setCloneCellWidths(cellWidths) {
+    this.$header.find('tr').each(function(trIndex) {
+      $(this)
+        .find('th, td')
+        .each(function(cellIndex) {
+          const width = cellWidths[trIndex][cellIndex];
+          $(this).css({
+            boxSizing: 'border-box',
+            width,
+          });
+        });
+    });
   }
 
   attachScrollEvent() {
