@@ -1,3 +1,7 @@
+const {toMatchImageSnapshot} = require('jest-image-snapshot');
+
+expect.extend({toMatchImageSnapshot});
+
 beforeEach(async () => {
   await page.setViewport({
     width: 1650,
@@ -165,4 +169,21 @@ test('sticky header is fixed to the bottom of the table when scroll reaches bott
     top: '0px',
   });
   expect(hasClass).toBe(false);
+});
+
+describe('image snapshots', () => {
+  test('header is not be visible when not scrolled', async () => {
+    const screen = await page.screenshot();
+    expect(screen).toMatchImageSnapshot();
+  });
+
+  test('header is sticky when scrolled', async () => {
+    await page.evaluate(() => {
+      $(window).scrollTop(300);
+    });
+    await page.waitFor(100);
+
+    const screen = await page.screenshot();
+    expect(screen).toMatchImageSnapshot();
+  });
 });
